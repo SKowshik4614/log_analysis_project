@@ -18,7 +18,7 @@ def popular_article():
     query = "select * from popular_articles"
     c.execute(query)
     for (title, views) in c.fetchall():
-          print("{} ==> {} views".format(title, views))
+        print("{} ---> {} views".format(title, views))
     db.commit()
     db.close()
 
@@ -34,7 +34,7 @@ def popular_authors():
     query = "select * from popular_articles"
     c.execute(query)
     for (name, view) in c.fetchall():
-          print("{} ==> {} views".format(name, view))
+        print("{} ---> {} views".format(name, view))
     db.commit()
     db.close()
 
@@ -53,7 +53,7 @@ def log_status():
     c.execute(query)
     out = c.fetchall()
     for i in range(0, len(out), 1):
-          print str(out[i][0])+ " ==> "+str(round(out[i][3], 2))+"% errors"
+        print str(out[i][0])+ " ---> "+str(round(out[i][3], 2))+"% errors"
     db.commit()
     db.close()
 
