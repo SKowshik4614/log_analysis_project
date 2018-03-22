@@ -22,6 +22,7 @@ def popular_article():
     db.commit()
     db.close()
 
+
 def popular_authors():
     db, c = connect()
     q2 = "create or replace view popular_authors as select authors.name,\
@@ -36,6 +37,7 @@ def popular_authors():
           print("{} ==> {} views".format(name, view))
     db.commit()
     db.close()
+
 
 def log_status():
     db, c = connect()
@@ -55,7 +57,8 @@ def log_status():
     db.commit()
     db.close()
 
-  if __name__ == '__main__':
+
+if __name__ == '__main__':
     popular_article()
     popular_authors()
     log_status()
