@@ -19,7 +19,7 @@ def popular_article():
   query = "select * from popular_articles"
   c.execute(query)
   for (title, views) in c.fetchall():
-  	print("    {} - {} views".format(title, views))
+        print("{} ==> {} views".format(title, views))
   db.commit()
   db.close()
 
@@ -34,7 +34,7 @@ def popular_authors():
   query = "select * from popular_articles"
   c.execute(query)
   for (name, view) in c.fetchall():
-  	print("    {} - {} views".format(name, view))
+        print("{} ==> {} views".format(name, view))
   db.commit()
   db.close()
 
@@ -44,15 +44,15 @@ def log_status():
         (Error::float*100)/Total::float as Percent from\
         (select time::timestamp::date as Date, count(status) as Total,\
         sum(case when status = '404 NOT FOUND' then 1 else 0 end) as Error\
-        from log group by time::timestamp::date) as result\
+        from log group by time::timestamp::date) as out\
         where (Error::float*100)/Total::float > 1.0 order by Percent desc"
   c.execute(q3)
   print("More than 1% of Requests Errors:")
   query = "select * from log_status"
   c.execute(query)
-  result = c.fetchall()
-  for i in range(0, len(result), 1):
-        print str(result[i][0])+ " - "+str(round(result[i][3], 2))+"% errors"
+  out = c.fetchall()
+  for i in range(0, len(out), 1):
+        print str(out[i][0])+ " ==> "+str(round(out[i][3], 2))+"% errors"
   db.commit()
   db.close()
 
